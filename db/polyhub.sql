@@ -1,13 +1,12 @@
-drop table if exists polyhackers;
+drop table if exists members;
 
-create table polyhackers (
-  id            integer not null primary key,
+create table members (
+  id            serial not null primary key,
   moniker       varchar(100) not null unique,
-  joined        date,
-  github_data   json,
+  joined        date default CURRENT_DATE,
   data          json,
-  updated_at    date,
-  created_at    date
+  updated_at    date default CURRENT_DATE,
+  created_at    date default CURRENT_DATE
 );
 
-create index idx_moniker ON polyhackers (moniker);
+create index idx_moniker ON members (moniker);
